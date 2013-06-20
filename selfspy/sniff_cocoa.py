@@ -27,6 +27,14 @@ from Cocoa import (NSEvent,
                    NSAlternateKeyMask, NSCommandKeyMask, NSControlKeyMask,
                    NSShiftKeyMask, NSAlphaShiftKeyMask,
                    NSApplicationActivationPolicyProhibited)
+
+try:
+    import Quartz
+except ImportError:
+    import sys
+    version = '%s.%s' % sys.version_info[:2]
+    sys.path.append('/System/Library/Frameworks/Python.framework/Versions/%s/Extras/lib/python/PyObjC' % version)
+
 from Quartz import CGWindowListCopyWindowInfo, kCGWindowListOptionOnScreenOnly, kCGNullWindowID
 from PyObjCTools import AppHelper
 import config as cfg
